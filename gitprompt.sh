@@ -253,11 +253,11 @@ function git_prompt_config()
   else
     local ps=""
     if [[ -n "$VIRTUAL_ENV" ]]; then
-      VENV=$(basename "${VIRTUAL_ENV}")
+      VENV="venv:"$(basename "${VIRTUAL_ENV}")
       ps="${ps}${GIT_PROMPT_VIRTUALENV//_VIRTUALENV_/${VENV}}"
     fi
     if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
-      VENV=$(basename "${CONDA_DEFAULT_ENV}")
+      VENV="conda:"$(basename "${CONDA_DEFAULT_ENV}")
       ps="${ps}${GIT_PROMPT_VIRTUALENV//_VIRTUALENV_/${VENV}}"
     fi
     ps="$ps$PROMPT_START$($prompt_callback)$PROMPT_END"
@@ -437,12 +437,12 @@ function updatePrompt() {
 
     NEW_PROMPT=""
     if [[ -n "$VIRTUAL_ENV" ]]; then
-      VENV=$(basename "${VIRTUAL_ENV}")
+      VENV="venv:"$(basename "${VIRTUAL_ENV}")
       NEW_PROMPT="$NEW_PROMPT${GIT_PROMPT_VIRTUALENV//_VIRTUALENV_/${VENV}}"
     fi
 
     if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
-      VENV=$(basename "${CONDA_DEFAULT_ENV}")
+      VENV="conda:"$(basename "${CONDA_DEFAULT_ENV}")
       NEW_PROMPT="$NEW_PROMPT${GIT_PROMPT_VIRTUALENV//_VIRTUALENV_/${VENV}}"
     fi
 
